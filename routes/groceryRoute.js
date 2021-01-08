@@ -5,6 +5,7 @@ const router = express.Router();
 
 router.get("/getGroceries", (req, res) => {
 	var url_parts = url.parse(req.url, true);
+	console.log(url_parts.query.room);
     Grocery.find({ roomCode: url_parts.query.room })
         .then(results => {
           res.status(200).json(results);
