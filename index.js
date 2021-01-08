@@ -21,7 +21,11 @@ const grocery = require("./routes/groceryRoute");
 app.use("/groceries", grocery);
 
 if (process.env.NODE_ENV === 'production') {
-	app.use(express.static('client/build'));
+	app.use(express.static(path.join(__dirname, 'front_end', 'build')));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'front_end', 'build', 'index.html'))
+  });
 }
 
 app.listen(process.env.PORT || 5000);
