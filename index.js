@@ -9,21 +9,9 @@ const cors = require("cors");
 app.use(cors());
 
 require("dotenv/config");
-const db = process.env.DB_CONNECTION;
-const connectDB = async () => {
-  try {
-    await mongoose.connect(db, {
-      useUnifiedTopology: true,
-      useNewUrlParser: true
-    });
-    console.log("MongoDB is Connected...");
-  } catch (err) {
-    console.error(err.message);
-    process.exit(1);
-  }
-};
-
-// mongoose.connect(process.env.DB_CONNECTION, { useUnifiedTopology: true, useNewUrlParser: true });
+mongoose.connect(process.env.DB_CONNECTION, { useUnifiedTopology: true, useNewUrlParser: true })
+	.then(() => console.log("Database Connected Successfully"))
+    .catch(err => console.log(err));
 
 const user = require("./routes/userRoute");
 app.use("/users", user);
