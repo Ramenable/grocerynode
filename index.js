@@ -9,7 +9,7 @@ const cors = require("cors");
 app.use(cors());
 
 require("dotenv/config");
-mongoose.connect('mongodb+srv://achen:1369greenbaR.@grocery.2ktgp.mongodb.net/grocery?retryWrites=true&w=majority?authSource=yourDB&w=1', { useUnifiedTopology: true, useNewUrlParser: true });
+mongoose.connect(process.env.DB_CONNECTION, { useUnifiedTopology: true, useNewUrlParser: true });
 
 const user = require("./routes/userRoute");
 app.use("/users", user);
