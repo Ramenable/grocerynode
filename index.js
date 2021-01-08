@@ -20,7 +20,4 @@ app.use("/rooms", room);
 const grocery = require("./routes/groceryRoute");
 app.use("/groceries", grocery);
 
-//localhost:5000/
- const server = app.listen(5000, function(){
-     console.log("Server running on port 5000");
- });
+app.listen(process.env.PORT || 5000);
